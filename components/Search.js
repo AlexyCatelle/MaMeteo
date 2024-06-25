@@ -1,35 +1,25 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, TextInput } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, KeyboardFocusView } from 'react-native';
 
-export default class Search extends React.Component {
+export default function Search() {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            city: 'Useless Text',
-        };
-    };
-    setCity = (city) => {
-        this.setState({ city });
-    };
+    const [city, onChangeText] = React.useState('Selectionner votre ville')
 
-    render() {
-        return (
-            <SafeAreaView>
-                <TextInput
-                    style={styles.input}
-                    value={this.state.city}
-                    onChangeText={this.state.city}
-                />
-            </SafeAreaView>
-        );
-    };
+    return (
+        <SafeAreaView>
+            <TextInput
+                style={styles.input}
+                value={city}
+                onChangeText={onChangeText}
+            />
+        </SafeAreaView>
+    );
 };
 
 const styles = StyleSheet.create({
     input: {
         height: 40,
-        margin: 12,
+        margin: 30,
         borderWidth: 1,
         padding: 10,
     },
