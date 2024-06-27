@@ -3,13 +3,36 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import About from './components/about';
 import Search from './components/Search';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default function App() {
+function HomeScreen() {
   return (
-    <View style={styles.searchContainer}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
       <Search />
       <StatusBar style="auto" />
     </View>
+  );
+}
+
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -21,7 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   searchContainer: {
-    marginHorizontal:20,
-    marginVertical:60,
+    marginHorizontal: 20,
+    marginVertical: 60,
   }
 });
